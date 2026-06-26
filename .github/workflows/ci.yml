@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  invariant:
+    name: zero-other-extension-deps invariant
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: backend/go.mod
+      - name: Enforce no-other-extension dependency
+        run: bash scripts/check-no-extension-deps.sh
+
+  backend:
+    name: backend build + vet
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: backend/go.mod
+      - name: Build
+        working-directory: backend
+        run: go build ./...
+      - name: Vet
+        working-directory: backend
+        run: go vet ./...
+
+  typespec:
+    name: typespec compile (frozen wire contract)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install pnpm
+        run: npm i -g pnpm
+      - name: Compile TypeSpec
+        working-directory: typespec
+        run: |
+          pnpm install --ignore-scripts
+          node node_modules/@typespec/compiler/cmd/tsp.js compile .
+
+  frontend:
+    name: TS contract typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install pnpm
+        run: npm i -g pnpm
+      - name: Install (no build scripts — esbuild binary ships prebuilt)
+        working-directory: frontend
+        run: pnpm install --ignore-scripts
+      - name: Typecheck
+        working-directory: frontend
+        run: node node_modules/typescript/bin/tsc --noEmit
