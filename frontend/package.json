@@ -4,6 +4,12 @@
   "description": "Published TS contract for the team extension (follow stub), hand-implemented to match ../typespec/api4team.tsp.",
   "type": "module",
   "main": "src/index.ts",
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "node node_modules/vitest/vitest.mjs run",
     "typecheck": "node node_modules/typescript/bin/tsc --noEmit"
