@@ -1,6 +1,6 @@
 // @sneat/extension-team-contract — public TS contract for the team extension.
 // Types are hand-implemented to match ../../typespec/api4team.tsp (no emitters).
-// See also: github.com/sneat-co/sneat-team-ext/backend/team for the Go counterpart.
+// See also: github.com/sneat-co/ext-sneat-team/backend/team for the Go counterpart.
 
 /** Request body for POST /v0/api4team/follow. */
 export interface FollowTeamRequest {

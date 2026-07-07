@@ -12,7 +12,7 @@ using Http;
  * it is specified.
  *
  * These TypeSpec files are the **frozen wire contract** between the Go backend
- * (`sneat-team-ext/backend`) and the Angular frontend (`@sneat/extension-team-contract`).
+ * (`ext-sneat-team/backend`) and the Angular frontend (`@sneat/extension-team-contract`).
  * No emitters are configured — the `.tsp` is the source of truth for the wire
  * shape; both sides hand-implement matching types (same convention as
  * `eventus/typespec` and the `sneat-go/typespec` directory).

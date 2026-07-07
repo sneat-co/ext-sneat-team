@@ -1,3 +1,3 @@
-module github.com/sneat-co/sneat-team-ext/backend
+module github.com/sneat-co/ext-sneat-team/backend
 
 go 1.25.0

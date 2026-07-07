@@ -1,4 +1,4 @@
-// Package backend is the root of the sneat-team-ext backend Go module.
+// Package backend is the root of the ext-sneat-team backend Go module.
 //
 // This module holds the public contract surface of the team extension —
 // the follow DTO shapes and the Follower facade interface — and depends
