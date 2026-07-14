@@ -21,7 +21,7 @@ team's updates. No other operations are defined yet.
 ext-sneat-team/
 ├── typespec/   # api4team.tsp — the frozen wire contract (source of truth)
 ├── backend/    # Go module github.com/sneat-co/ext-sneat-team/backend (hand-implemented to match the .tsp)
-└── frontend/   # lib published as @sneat/extension-team-contract (hand-implemented to match the .tsp)
+└── frontend/   # Nx-built npm package @sneat/extension-team-contract (hand-implemented to match the .tsp)
 ```
 
 ## TypeSpec is the source of truth (no emitters)
