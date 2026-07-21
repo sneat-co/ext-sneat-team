@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
       - name: Install pnpm
         run: npm i -g pnpm
       - name: Compile TypeSpec
@@ -55,7 +55,7 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
       - name: Install pnpm
         run: npm i -g pnpm
       - name: Install (no build scripts — esbuild binary ships prebuilt)
